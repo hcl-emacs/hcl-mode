@@ -21,7 +21,7 @@ You can install `hcl-mode` with the following command.
 <kbd>M-x package-install [RET] hcl-mode [RET]</kbd>
 
 If you prefer a manual installation, copy `hcl-mode.el` to a directory in
-your `load-path`, and be sure to `(require 'hcl-moe)` before use.
+your `load-path`, and be sure to `(require 'hcl-mode)` before use.
 
 ## Features
 
