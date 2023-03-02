@@ -146,7 +146,8 @@
     (skip-chars-forward "^{")
     (forward-char 1)
     (let ((orig-level (hcl--paren-level)))
-      (while (>= (hcl--paren-level) orig-level)
+      (while (and (>= (hcl--paren-level) orig-level)
+                  (< (point) (point-max)))
         (skip-chars-forward "^}")
         (forward-line +1)))))
 
