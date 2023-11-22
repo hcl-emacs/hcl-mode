@@ -104,7 +104,6 @@
 
 (defun hcl-calculate-indentation ()
   (let ((block-indentation (hcl--block-indentation)))
-    (delete-region (line-beginning-position) (point))
     (if block-indentation
         (if (looking-at "[]}]")
             block-indentation
