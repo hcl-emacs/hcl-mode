@@ -3,8 +3,10 @@
 Major mode for [Hashicorp Configuration Language](https://github.com/hashicorp/hcl).
 
 This mode was originally written by
-[@syohex](https://github.com/syohex), but became unmaintained, so this
-fork (@purcell) is now its official home for MELPA puposes.
+[@syohex](https://github.com/syohex), but became unmaintained,
+so [@purcell](https://github.com/purcell) took it over for a while,
+and now [github.com/hcl-emacs/hcl-mode](https://github.com/hcl-emacs/hcl-mode) is
+its official home for MELPA puposes.
 
 
 ## Screenshot
