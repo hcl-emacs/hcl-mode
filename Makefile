@@ -1,4 +1,5 @@
 EMACS ?= emacs
+BATCH_W_ERROR = -batch --eval "(setq byte-compile-error-on-warn t)"
 
 # A space-separated list of required package names
 NEEDED_PACKAGES = package-lint
@@ -17,18 +18,18 @@ INIT_PACKAGES="(progn \
 all: compile-tests test package-lint clean-elc
 
 package-lint:
-	${EMACS} --eval ${INIT_PACKAGES} -batch -f package-lint-batch-and-exit hcl-mode.el
+	${EMACS} --eval ${INIT_PACKAGES} $(BATCH_W_ERROR) -f package-lint-batch-and-exit hcl-mode.el
 
 hcl-mode.elc: hcl-mode.el Makefile
-	${EMACS} -batch -f batch-byte-compile $<
+	${EMACS} $(BATCH_W_ERROR) -f batch-byte-compile $<
 
 test/test-helper.elc: test/test-helper.el hcl-mode.elc
-	${EMACS} -L . -batch -f batch-byte-compile $<
+	${EMACS} -L . $(BATCH_W_ERROR) -f batch-byte-compile $<
 
 TESTS-EL = test/test-command.el test/test-highlighting.el test/test-indentation.el
 TESTS-ELC = test/test-command.elc test/test-highlighting.elc test/test-indentation.elc
 $(TESTS-ELC): test/test-helper.elc hcl-mode.elc $(TESTS-EL)
-	${EMACS} -L . -l test/test-helper.elc -batch -f batch-byte-compile test/test-command.el test/test-highlighting.el test/test-indentation.el
+	${EMACS} -L . -l test/test-helper.elc $(BATCH_W_ERROR) -f batch-byte-compile test/test-command.el test/test-highlighting.el test/test-indentation.el
 compile-tests: $(TESTS-ELC)
 
 test: $(TESTS-ELC)
