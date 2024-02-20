@@ -23,6 +23,12 @@
 
 (require 'hcl-mode)
 
+(if (fboundp 'font-lock-ensure)
+    (defalias 'hcl-mode--font-lock-ensure 'font-lock-ensure)
+  ;; `font-lock-ensure' didn't exist prior to Emacs 25
+  (defun hcl-mode--font-lock-ensure ()
+    (with-no-warnings (font-lock-fontify-buffer))))
+
 (defmacro with-hcl-temp-buffer (code &rest body)
   "Insert `code' and enable `hcl-mode'. cursor is beginning of buffer"
   (declare (indent 0) (debug t))
@@ -30,7 +36,7 @@
      (insert ,code)
      (goto-char (point-min))
      (hcl-mode)
-     (font-lock-fontify-buffer)
+     (hcl-mode--font-lock-ensure)
      ,@body))
 
 (defun forward-cursor-on (pattern)
