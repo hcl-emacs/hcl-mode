@@ -17,13 +17,13 @@ INIT_PACKAGES="(progn \
 all: compile test package-lint clean-elc
 
 package-lint:
-	${EMACS} -Q --eval ${INIT_PACKAGES} -batch -f package-lint-batch-and-exit hcl-mode.el
+	${EMACS} --eval ${INIT_PACKAGES} -batch -f package-lint-batch-and-exit hcl-mode.el
 
 compile: clean-elc
-	${EMACS} -Q --eval ${INIT_PACKAGES} -L . -batch -f batch-byte-compile *.el
+	${EMACS} --eval ${INIT_PACKAGES} -L . -batch -f batch-byte-compile *.el
 
 test:
-	$(EMACS) -Q --eval ${INIT_PACKAGES} -L . -batch \
+	$(EMACS) --eval ${INIT_PACKAGES} -L . -batch \
 		-l test/test-helper.el \
 		-l test/test-indentation.el \
 		-l test/test-command.el \
