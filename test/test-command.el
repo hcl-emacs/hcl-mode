@@ -1,4 +1,4 @@
-;;; test-command.el --- test commands of hcl-mode
+;;; test-command.el --- test commands of hcl-mode  -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2017 by Syohei YOSHIDA
 

@@ -1,4 +1,4 @@
-;;; test-highlighting.el --- test for highlighting of hcl-mode
+;;; test-highlighting.el --- test for highlighting of hcl-mode  -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2017 by Syohei YOSHIDA
 

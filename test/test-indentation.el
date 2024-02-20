@@ -1,4 +1,4 @@
-;;; test-indentation.el --- test for indentation
+;;; test-indentation.el --- test for indentation  -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2014 by Syohei YOSHIDA
 

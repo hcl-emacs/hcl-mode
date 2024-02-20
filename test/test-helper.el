@@ -1,4 +1,4 @@
-;;; test-helper.el --- helper for testing hcl-mode
+;;; test-helper.el --- helper for testing hcl-mode  -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2017 by Syohei YOSHIDA
 
