@@ -20,10 +20,10 @@ package-lint:
 	${EMACS} --eval ${INIT_PACKAGES} -batch -f package-lint-batch-and-exit hcl-mode.el
 
 compile: clean-elc
-	${EMACS} --eval ${INIT_PACKAGES} -L . -batch -f batch-byte-compile *.el
+	${EMACS} -batch -f batch-byte-compile *.el
 
 test:
-	$(EMACS) --eval ${INIT_PACKAGES} -L . -batch \
+	$(EMACS) -L . -batch \
 		-l test/test-helper.el \
 		-l test/test-indentation.el \
 		-l test/test-command.el \
