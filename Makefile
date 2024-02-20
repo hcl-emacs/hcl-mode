@@ -1,7 +1,7 @@
 EMACS ?= emacs
 
 # A space-separated list of required package names
-NEEDED_PACKAGES = package-lint ert
+NEEDED_PACKAGES = package-lint
 
 INIT_PACKAGES="(progn \
   (require 'package) \
