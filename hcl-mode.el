@@ -102,6 +102,14 @@
                    (forward-line -1))))))
       (current-indentation))))
 
+(defun hcl-calculate-indentation ()
+  (let ((block-indentation (hcl--block-indentation)))
+    (if block-indentation
+        (if (looking-at "[]}]")
+            block-indentation
+          (+ block-indentation hcl-indent-level))
+      (hcl--previous-indentation))))
+
 (defun hcl-indent-line ()
   "Indent current line as Hcl configuration."
   (interactive)
@@ -110,15 +118,9 @@
     (back-to-indentation)
     (if (hcl--in-string-or-comment-p)
         (goto-char curpoint)
-      (let ((block-indentation (hcl--block-indentation)))
-        (delete-region (line-beginning-position) (point))
-        (if block-indentation
-            (if (looking-at "[]}]")
-                (indent-to block-indentation)
-              (indent-to (+ block-indentation hcl-indent-level)))
-          (indent-to (hcl--previous-indentation)))
-        (when (> (- (point-max) pos) (point))
-          (goto-char (- (point-max) pos)))))))
+      (indent-line-to (hcl-calculate-indentation))
+      (when (> (- (point-max) pos) (point))
+        (goto-char (- (point-max) pos))))))
 
 (defun hcl-beginning-of-defun (&optional count)
   (interactive "p")
