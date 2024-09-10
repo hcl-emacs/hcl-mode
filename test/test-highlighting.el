@@ -75,6 +75,8 @@ output \"name\" {
    }
 }
 "
+    (forward-cursor-on "output")
+    (should (face-at-cursor-p 'font-lock-type-face))
 
     (forward-cursor-on "bar")
     (should (face-at-cursor-p 'font-lock-variable-name-face))
