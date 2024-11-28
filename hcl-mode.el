@@ -53,7 +53,7 @@
   (concat hcl--identifier-regexp "\\s-*=\\(?:[^>=]\\)"))
 
 (defconst hcl--map-regexp
-  (concat hcl--identifier-regexp "\\s-*{"))
+  (format "%1$s\\(?:\\s-*\"%1$s\"\\)*\\s-*{" hcl--identifier-regexp))
 
 (defconst hcl--boolean-regexp
   (concat "\\(?:^\\|[^.]\\)"
